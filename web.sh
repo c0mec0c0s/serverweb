@@ -21,7 +21,8 @@ sudo apt install php7.1 libapache2-mod-php7.1 php7.1-common php7.1-mbstring php7
 cd /var/www/html/
 sudo rm *
 sudo wget http://wordpress.org/latest.tar.gz
-sudo tar xzf latest.tar.gzsudo mv wordpress/* .
+sudo tar xzf latest.tar.gz
+sudo mv wordpress/* .
 sudo chown -R www-data: .
 
 sudo apt-get update
