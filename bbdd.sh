@@ -14,11 +14,11 @@ sudo systemctl restart mariadb.service
 
 sudo mysql -u root -p
 
-# CREATE DATABASE wpdb;
-# CREATE USER 'wpdbuser'@'localhost' IDENTIFIED BY 'new_password_here';
-# GRANT ALL ON wpdb.* TO 'wpdbuser'@'localhost' IDENTIFIED BY 'user_password_here' WITH GRANT OPTION;
-# GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'password';
-# FLUSH PRIVILEGES;
-# EXIT;
+echo "CREATE DATABASE wpdb;"
+echo "CREATE USER 'wpdbuser'@'localhost' IDENTIFIED BY 'new_password_here';"
+echo "GRANT ALL ON wpdb.* TO 'wpdbuser'@'localhost' IDENTIFIED BY 'user_password_here' WITH GRANT OPTION;"
+echo "GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'password';"
+echo "FLUSH PRIVILEGES;"
+echo "EXIT;"
 
 sudo apt-get install phpmyadmin -y
