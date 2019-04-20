@@ -12,13 +12,15 @@ sudo systemctl restart mariadb.service
 
 # Step 5: Create WordPress Database
 
-sudo mysql -u root -p
 
 echo "CREATE DATABASE wpdb;"
-echo "CREATE USER 'wpdbuser'@'localhost' IDENTIFIED BY 'new_password_here';"
-echo "GRANT ALL ON wpdb.* TO 'wpdbuser'@'localhost' IDENTIFIED BY 'user_password_here' WITH GRANT OPTION;"
-echo "GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'password';"
+echo "CREATE USER 'wpdbuser'@'localhost' IDENTIFIED BY 'Il0vemac.';"
+echo "GRANT ALL ON wpdb.* TO 'wpdbuser'@'localhost' IDENTIFIED BY 'Il0vemac.' WITH GRANT OPTION;"
+echo "GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'Il0vemac.';"
+echo "GRANT ALL PRIVILEGES ON *.* TO wpdbuser@'%' IDENTIFIED BY 'Il0vemac.';"
 echo "FLUSH PRIVILEGES;"
 echo "EXIT;"
+
+sudo mysql -u root -p
 
 sudo apt-get install phpmyadmin -y
