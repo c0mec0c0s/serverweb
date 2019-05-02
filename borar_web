@@ -1,0 +1,14 @@
+clear
+ls -l /etc/apache2/sites-available/
+echo ""
+echo "¿Cual es la web que quieres eliminar?"
+read cuenta
+sudo rm /etc/apache2/sites-available/$cuenta.conf
+sudo rm /etc/apache2/sites-enabled/$cuenta.conf
+sudo rm /var/www/$cuenta -R
+echo ""
+ls -l /etc/apache2/sites-available/
+echo ""
+ls -l /etc/apache2/sites-enabled/
+echo ""
+ls -l /var/www/

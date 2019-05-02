@@ -1,0 +1,50 @@
+clear
+echo "¿Cual es el nombre de la nueva WEB?"
+read cuenta
+echo "Escribe la contraseña de CUENTA/BBDD:"
+read pass
+echo "Escribe el DOMINIO desde el que se accedera a la web:"
+read dominio
+
+clear
+
+sudo cp ejemplo.conf /etc/apache2/sites-available/
+
+mv /etc/apache2/sites-available/ejemplo.conf /etc/apache2/sites-available/$cuenta.conf
+sed -i "s/ejemplo/$cuenta/g" "/etc/apache2/sites-available/$cuenta.conf"
+sed -i "s/dominio.com/$dominio/g" "/etc/apache2/sites-available/$cuenta.conf"
+
+sudo a2ensite $cuenta.conf
+
+sudo mkdir /var/www/$cuenta
+cd /var/www/$cuenta
+sudo wget http://wordpress.org/latest.tar.gz
+sudo tar xzf latest.tar.gz
+sudo mv wordpress/* .
+sudo chown -R www-data: .
+
+sudo apt-get update -y
+
+clear
+
+echo "CREATE DATABASE db_$cuenta;"
+echo "CREATE USER 'adm_$cuenta'@'localhost' IDENTIFIED BY '$pass';"
+echo "GRANT ALL ON db_$cuenta.* TO 'adm_$cuenta'@'localhost' IDENTIFIED BY '$pass' WITH GRANT OPTION;"
+echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Il0vemac.';"
+echo "GRANT ALL PRIVILEGES ON *.* TO 'adm_$cuenta'@'%' IDENTIFIED BY '$pass';"
+echo "GRANT ALL ON *.* TO 'adm_$cuenta'@'localhost' IDENTIFIED BY '$pass' WITH GRANT OPTION;"
+echo "GRANT ALL ON *.* TO 'root'@'localhost' IDENTIFIED BY 'Il0vemac.' WITH GRANT OPTION;"
+echo "FLUSH PRIVILEGES;"
+echo "EXIT;"
+
+echo ""
+echo "sudo mysql -u root -p"
+echo ""
+echo "sudo systemctl restart mariadb.service"
+
+sudo ssh josemi@192.168.1.101
+
+
+
+
+

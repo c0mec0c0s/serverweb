@@ -1,0 +1,6 @@
+ls -l /etc/apache2/sites-available/
+echo ""
+ls -l /etc/apache2/sites-enabled/
+echo ""
+ls -l /var/www/
+
